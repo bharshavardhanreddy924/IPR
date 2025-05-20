@@ -29,7 +29,7 @@ tools_data = {
     "bard": {
         "name": "Google Bard",
         "startup_tagline": "Your AI collaborator for brainstorming, content creation, and research, powered by Google's innovation.",
-        "logo_url": "https://www.gstatic.com/lamda/images/bard_logo_64px_clr_2x_bd0707a6030208d108563be649f30f56.png",
+        "logo_url": "/static/img/bard-logo.png",
         "official_link": "https://bard.google.com/",
         "cta_link": "https://bard.google.com/",
         "cta_text": "Try Bard for Free",
@@ -176,7 +176,7 @@ tools_data = {
     "chatgpt": {
         "name": "OpenAI ChatGPT",
         "startup_tagline": "The versatile AI powerhouse for content, code, and creative solutions, with options from free to enterprise.",
-        "logo_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/1024px-ChatGPT_logo.svg.png",
+        "logo_url": "/static/img/chatgpt-logo.png",
         "official_link": "https://chat.openai.com/",
         "cta_link": "https://chat.openai.com/auth/login",
         "cta_text": "Try ChatGPT",
@@ -365,7 +365,7 @@ tools_data = {
     "claude": {
         "name": "Anthropic Claude",
         "startup_tagline": "The safety-focused AI for reliable text generation, summarization, and complex reasoning, with industry-leading context windows.",
-        "logo_url": "https://assets-global.website-files.com/63bc1f0a89104371a0910c19/646d3c27b78b5e3bd27a0333_anthropic_logo_lockup_black.png",
+        "logo_url": "/static/img/claude-logo.png",
         "official_link": "https://claude.ai/",
         "cta_link": "https://claude.ai/login",
         "cta_text": "Try Claude",
@@ -551,7 +551,7 @@ tools_data = {
     "gemini": {
         "name": "Google Gemini",
         "startup_tagline": "Google's natively multimodal AI, powering next-gen applications with versatile intelligence tiers (Ultra, Pro, Nano).",
-        "logo_url": "https://blog.google/static/blogv2/images/gemini/Gemini_logo_@2x.png",
+        "logo_url": "/static/img/gemini-logo.png",
         "official_link": "https://deepmind.google/technologies/gemini/",
         "cta_link": "https://ai.google.dev/", # Google AI Studio for developers
         "cta_text": "Explore Gemini for Developers",
@@ -723,7 +723,7 @@ tools_data = {
     "notionai": {
         "name": "Notion AI",
         "startup_tagline": "Supercharge your startup's productivity by embedding AI directly into your Notion workspace for writing, summarizing, and task management.",
-        "logo_url": "https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png", # Notion logo
+        "logo_url": "/static/img/notion-logo.png",
         "official_link": "https://www.notion.so/product/ai",
         "cta_link": "https://www.notion.so/product/ai",
         "cta_text": "Add Notion AI to Your Workspace",
@@ -877,7 +877,7 @@ tools_data = {
     "bardeen": {
         "name": "Bardeen AI",
         "startup_tagline": "Automate your startup's web-based workflows and repetitive tasks with AI-powered, no-code browser automation.",
-        "logo_url": "https://pbs.twimg.com/profile_images/1706797989090807808/t3P93T6e_400x400.jpg",
+        "logo_url": "/static/img/bardeen-logo.png",
         "official_link": "https://www.bardeen.ai/",
         "cta_link": "https://www.bardeen.ai/download",
         "cta_text": "Get Bardeen for Free",
