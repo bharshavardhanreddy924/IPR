@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}{{ tool_data.name }} - AI Tools for Startups{% endblock %}
+
+{% block content %}
+<div class="tool-header text-center">
+    <img src="{{ tool_data.logo_url }}" alt="{{ tool_data.name }} Logo" class="tool-logo">
+    <h1>{{ tool_data.name }}</h1>
+    <p class="tool-tagline">{{ tool_data.startup_tagline }}</p>
+    <a href="{{ tool_data.cta_link }}" class="cta-button" target="_blank" rel="noopener noreferrer">{{ tool_data.cta_text }}</a>
+</div>
+
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <!-- Introduction -->
+        <div class="content-section">
+            <h2 class="section-title">{{ tool_data.sections.intro_startup }}</h2>
+            {{ tool_data.content.intro_startup | safe }}
+        </div>
+
+        <!-- Features -->
+        <div class="content-section">
+            <h2 class="section-title">{{ tool_data.sections.features_startup }}</h2>
+            {{ tool_data.content.features_startup | safe }}
+        </div>
+
+        <!-- Getting Started -->
+        <div class="content-section">
+            <h2 class="section-title">{{ tool_data.sections.getting_started_startup }}</h2>
+            {{ tool_data.content.getting_started_startup | safe }}
+        </div>
+
+        <!-- Use Cases -->
+        <div class="content-section">
+            <h2 class="section-title">{{ tool_data.sections.use_cases_startup }}</h2>
+            {{ tool_data.content.use_cases_startup | safe }}
+        </div>
+
+        <!-- Integration -->
+        <div class="content-section">
+            <h2 class="section-title">{{ tool_data.sections.integration_startup }}</h2>
+            {{ tool_data.content.integration_startup | safe }}
+        </div>
+
+        <!-- ROI -->
+        <div class="content-section">
+            <h2 class="section-title">{{ tool_data.sections.roi_startup }}</h2>
+            {{ tool_data.content.roi_startup | safe }}
+        </div>
+
+        <!-- Pricing -->
+        <div class="content-section">
+            <h2 class="section-title">{{ tool_data.sections.pricing_startup }}</h2>
+            {{ tool_data.content.pricing_startup | safe }}
+        </div>
+
+        <!-- Action Steps -->
+        <div class="content-section">
+            <h2 class="section-title">{{ tool_data.sections.action_steps }}</h2>
+            {{ tool_data.content.action_steps | safe }}
+        </div>
+
+        <!-- Pros & Cons -->
+        <div class="content-section">
+            <h2 class="section-title">{{ tool_data.sections.pros_cons_startup }}</h2>
+            {{ tool_data.content.pros_cons_startup | safe }}
+        </div>
+
+        <!-- Resources -->
+        <div class="content-section">
+            <h2 class="section-title">{{ tool_data.sections.resources_startup }}</h2>
+            {{ tool_data.content.resources_startup | safe }}
+        </div>
+    </div>
+</div>
+{% endblock %}
