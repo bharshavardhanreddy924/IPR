@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request # Added request for active nav link
 import os
+from pathlib import Path
 app = Flask(__name__)
 
 # --- Helper Functions for Content Generation ---
@@ -27,151 +28,171 @@ def create_code_example_html(code_content, language="text", caption=None):
 # --- Content for AI Tool Pages (Startup Focused) ---
 tools_data = {
     "bard": {
-        "name": "Google Bard",
-        "startup_tagline": "Your AI collaborator for brainstorming, content creation, and research, powered by Google's innovation.",
-        "logo_url": "/static/img/bard-logo.png",
-        "official_link": "https://bard.google.com/",
-        "cta_link": "https://bard.google.com/",
-        "cta_text": "Try Bard for Free",
-        "sections": {
-            "intro_startup": "Why Bard for Your Startup?",
-            "features_startup": "Key Bard Features for Startup Success",
-            "getting_started_startup": "Quick Start with Bard for Your Team",
-            "use_cases_startup": "Bard in Action: Startup Use Cases",
-            "integration_startup": "Integrating Bard into Your Startup Workflow",
-            "roi_startup": "Understanding Bard's ROI for Startups",
-            "pricing_startup": "Bard Pricing: Value for Startups",
-            "action_steps": "Your First Week with Bard: Quick Wins",
-            "pros_cons_startup": "Bard: Pros & Cons for Startups",
-            "resources_startup": "Further Learning & Support"
-        },
-        "content": {
-            "intro_startup": """
-                <p>For agile startups, Google Bard offers a powerful, free-to-access AI assistant that can significantly boost productivity and creativity. Powered by Google's advanced Gemini models, Bard excels at generating diverse text formats, summarizing complex information, aiding in research, and even helping with basic coding tasks. It's like having an extra (very smart) team member for brainstorming marketing copy, drafting emails, understanding market trends, or quickly prototyping ideas.</p>
-                <p>Startups can leverage Bard to:</p>
-                <ul>
-                    <li><strong>Accelerate Content Creation:</strong> Generate blog posts, social media content, ad copy, and website text quickly.</li>
-                    <li><strong>Enhance Research:</strong> Get summaries of articles, find information on competitors, or explore new technologies.</li>
-                    <li><strong>Improve Communication:</strong> Draft professional emails, reports, and presentations.</li>
-                    <li><strong>Spark Innovation:</strong> Brainstorm new product features, business models, or marketing strategies.</li>
-                </ul>
-            """,
-            "features_startup": create_list_html([
-                ("Advanced Conversational AI", "Engage in natural dialogue for complex queries and iterative brainstorming, powered by Gemini models."),
-                ("Versatile Text Generation", "Create marketing copy, blog outlines, email drafts, ad scripts, and more, saving valuable time."),
-                ("Information Synthesis & Summarization", "Quickly understand long documents, research papers, or web articles to make informed decisions."),
-                ("Coding Assistance", "Generate code snippets, debug, and explain code, useful for lean tech teams or non-technical founders exploring ideas."),
-                ("Google Workspace Integration (via Extensions)", "Connect with Gmail, Docs, Drive to summarize emails, find files, or draft content within your existing workflow (check current availability)."),
-                ("Multilingual Capabilities", "Communicate and generate content in multiple languages, crucial for startups with global ambitions."),
-                ("Real-time Web Access", "Draws on current information from Google Search for up-to-date insights (use 'Google it' feature to verify)."),
-                ("Image Understanding & Generation", "Can analyze images in prompts and generate new visuals (powered by Imagen 2), useful for marketing and design mockups.")
-            ], list_class="key-feature-list", bold_first=True),
-            "getting_started_startup": """
-                <p>Getting your startup team onboarded with Bard is simple and free:</p>
-                <ol>
-                    <li><strong>Access Bard:</strong> Navigate to <a href="https://bard.google.com/" target="_blank" rel="noopener noreferrer">bard.google.com</a>.</li>
-                    <li><strong>Sign In:</strong> Each team member can use their personal Google Account. For business use, consider Google Workspace integration options if available and relevant for your organization's policies.</li>
-                    <li><strong>Familiarize with the Interface:</strong>
-                        <ul>
-                            <li><strong>Prompt Box:</strong> This is where you type your requests. Be clear and specific.</li>
-                            <li><strong>Multiple Drafts:</strong> Bard often provides a few response options. Explore them.</li>
-                            <li><strong>Edit & Regenerate:</strong> Refine your prompts or ask Bard to try again if the first response isn't perfect.</li>
-                            <li><strong>Extensions:</strong> Explore available extensions (e.g., Google Workspace, YouTube) to connect Bard with other tools.</li>
-                        </ul>
-                    </li>
-                    <li><strong>Start with Simple Tasks:</strong> Encourage your team to try Bard for daily tasks like drafting an email, summarizing an article, or brainstorming blog titles.</li>
-                    <li><strong>Share Best Practices:</strong> As your team learns, create a shared document of effective prompts and use cases relevant to your startup.</li>
-                </ol>
-            """,
-            "use_cases_startup": """
-                <h4>For Marketing & Sales:</h4>
-                <ul>
-                    <li><strong>Content Creation:</strong> "Draft three engaging Facebook ad headlines for our new SaaS product targeting small businesses."</li>
-                    <li><strong>SEO & Keyword Research:</strong> "Generate a list of LSI keywords related to 'sustainable packaging solutions for e-commerce'."</li>
-                    <li><strong>Email Marketing:</strong> "Write a follow-up email to a potential client who showed interest in our demo."</li>
-                    <li><strong>Market Research:</strong> "Summarize the key trends in the [your industry] market for 2024."</li>
-                </ul>
-                <h4>For Product Development:</h4>
-                <ul>
-                    <li><strong>Brainstorming Features:</strong> "List 5 innovative features for a project management app designed for remote teams."</li>
-                    <li><strong>User Story Generation:</strong> "Write a user story for a customer who wants to easily track their order."</li>
-                    <li><strong>Code Snippet Generation:</strong> "Provide a Python script to parse a CSV file and extract specific columns." (Always test and verify code)</li>
-                </ul>
-                <h4>For Operations & Productivity:</h4>
-                <ul>
-                    <li><strong>Meeting Summaries:</strong> (After a meeting) "Summarize the key discussion points and action items from the following meeting notes: [paste notes]."</li>
-                    <li><strong>Drafting Internal Comms:</strong> "Draft an internal announcement about our upcoming team-building event."</li>
-                    <li><strong>Learning & Skill Development:</strong> "Explain the concept of 'lean startup methodology' in simple terms."</li>
-                </ul>
-            """,
-            "integration_startup": """
-                <p>Bard's power can be amplified by integrating it into your startup's existing workflows, primarily through Google services:</p>
-                <ul>
-                    <li><strong>Google Workspace (via Extensions):</strong> If your startup uses Google Workspace, Bard extensions for Gmail, Docs, and Drive can be invaluable. Imagine summarizing long email threads in Gmail, drafting reports in Docs based on a prompt, or finding information across your Drive files directly from Bard. (<em>Note: Availability and features of extensions can evolve.</em>)</li>
-                    <li><strong>Export Options:</strong> Bard often allows you to export responses directly to Google Docs or Gmail, streamlining content transfer.</li>
-                    <li><strong>Copy-Pasting:</strong> For other applications, easily copy and paste generated text, code, or ideas into your project management tools, CRMs, or communication platforms.</li>
-                    <li><strong>API Access (Future/Vertex AI):</strong> While direct Bard API access might be limited, Google offers powerful models (like Gemini) via Vertex AI and Google AI Studio, which developers can use to build custom AI integrations for more advanced automation. This is a path for startups looking to embed AI deeply into their products or internal tools.</li>
-                </ul>
-                <p><strong>Tip for Startups:</strong> Focus on simple copy-paste workflows initially. As you identify high-value repetitive tasks, explore if Bard's direct integrations or Google's developer platforms can offer more seamless automation.</p>
-            """,
-            "roi_startup": """
-                <p>For startups, Bard's ROI comes from several key areas, especially since its core use is free:</p>
-                <ul>
-                    <li><strong>Time Savings:</strong> The most significant ROI. If Bard saves each team member even 30 minutes a day on tasks like drafting, research, or summarizing, this quickly adds up to substantial person-hours reclaimed for core business activities.
-                        <ul><li><em>Example:</em> 5 team members saving 2.5 hours/week each = 12.5 hours/week saved. At an average loaded cost of $50/hour, that's $625/week or $2500/month in productivity value.</li></ul>
-                    </li>
-                    <li><strong>Increased Content Output:</strong> Generate more marketing materials, blog posts, and social media updates with the same team size, potentially increasing lead generation and brand visibility.</li>
-                    <li><strong>Faster Idea Validation & Prototyping:</strong> Quickly flesh out ideas or generate initial drafts, reducing the time to validate concepts.</li>
-                    <li><strong>Reduced Outsourcing Costs:</strong> Potentially reduce reliance on freelance writers or researchers for initial drafts or basic content needs.</li>
-                    <li><strong>Improved Quality (with human oversight):</strong> Use Bard to generate initial drafts, then have your team refine and add human expertise, leading to higher quality output faster than starting from scratch.</li>
-                </ul>
-                <p><strong>Tracking ROI:</strong> While direct financial tracking can be hard for a free tool, startups can qualitatively assess impact by: surveying team members on time saved, tracking content output metrics, and noting speed of project completion for tasks where Bard was used.</p>
-            """,
-            "pricing_startup": """
-                <p><strong>Google Bard is currently free to use with a personal Google Account.</strong> This is a massive advantage for budget-conscious startups.</p>
-                <p>Key considerations for startups:</p>
-                <ul>
-                    <li><strong>No Upfront Cost:</strong> Immediately accessible without subscription fees for its core functionalities.</li>
-                    <li><strong>Google Account Requirement:</strong> Team members will need individual Google accounts.</li>
-                    <li><strong>Potential Future Developments:</strong>
-                        <ul>
-                            <li><strong>Bard Advanced:</strong> Google has mentioned potential premium tiers in the future (e.g., Bard Advanced with more powerful models). Startups should monitor announcements if advanced capabilities become critical.</li>
-                            <li><strong>Google Workspace Integration:</strong> While some Bard extensions might be free, deeper or more enterprise-focused integrations within Google Workspace could be part of paid Workspace tiers.</li>
-                            <li><strong>API Usage (via Vertex AI/Google AI Studio):</strong> If you decide to build custom applications using the underlying Gemini models, API usage costs will apply based on Google Cloud's pricing. This is for more advanced, custom development, not standard Bard usage.</li>
-                        </ul>
-                    </li>
-                </ul>
-                <p><strong>The current free offering provides immense value for startups to experiment, learn, and integrate AI into their daily operations without financial commitment for the core tool.</strong></p>
-            """,
-            "action_steps": create_list_html([
-                ("<strong>Day 1: Team Introduction & Simple Tasks.</strong> Introduce Bard to your team. Have everyone try asking it 3 simple questions or to draft a short email. Focus: Familiarization.", ""),
-                ("<strong>Day 2-3: Content Brainstorming & Drafting.</strong> Pick a current marketing or content need (e.g., blog ideas, social media posts). Use Bard collaboratively to brainstorm and draft initial versions. Focus: Collaborative Content Creation.", ""),
-                ("<strong>Day 4-5: Research & Summarization.</strong> Assign a team member to research a competitor or a new market trend using Bard for summarization and information gathering. Focus: Efficient Research.", ""),
-                ("<strong>End of Week 1: Share & Review.</strong> Hold a short team meeting to share experiences, successful prompts, and identify 1-2 recurring tasks where Bard can consistently save time. Focus: Identify Ongoing Value.", "")
-            ], list_class="action-steps-list", bold_first=False), # Custom handling of bolding here
-            "pros_cons_startup": create_pros_cons_html(
-                pros=[
-                    ("Free to Use: Massive advantage for lean startups.", "Powered by Google's advanced Gemini models, offering strong capabilities."),
-                    ("Excellent for Brainstorming & Ideation: Helps overcome creative blocks.", "Fast Content Generation: Speeds up drafting for marketing, comms, etc."),
-                    ("Good Summarization & Research Aid: Saves time understanding complex info."),
-                    ("Potential Workspace Integration: Can streamline workflows if using Google apps.")
-                ],
-                cons=[
-                    ("Accuracy Isn't Guaranteed: Always fact-check critical information (hallucinations).", "Requires Clear Prompting: Generic prompts yield generic results."),
-                    ("Over-Reliance Risk: Human oversight and critical thinking remain essential.", "Privacy Considerations: Be mindful of sharing sensitive company data in prompts (refer to Google's policies)."),
-                    ("Can Lack Nuance/Brand Voice: Generated content needs human editing for tone and specificity.")
-                ]
-            ),
-            "resources_startup": """
-                <ul>
-                    <li><a href="https://bard.google.com/faq" target="_blank" rel="noopener noreferrer">Official Bard FAQ:</a> Your first stop for common questions.</li>
-                    <li><a href="https://blog.google/technology/ai/" target="_blank" rel="noopener noreferrer">Google AI Blog:</a> For the latest announcements on Bard and Gemini.</li>
-                    <li><a href="https://support.google.com/bard" target="_blank" rel="noopener noreferrer">Bard Help Center:</a> Official guides and troubleshooting.</li>
-                    <li><strong>Internal Startup Wiki/Playbook:</strong> Create your own resource of effective Bard prompts and use cases tailored to your business needs.</li>
-                </ul>
-            """
-        }
+    "name": "Cursor AI",
+    "startup_tagline": "The AI-first code editor, designed to help you build software faster with a powerful, integrated AI.",
+    "logo_url": "/static/img/cursor-logo.jpeg",
+    "official_link": "https://cursor.sh/",
+    "cta_link": "https://cursor.sh/",
+    "cta_text": "Download Cursor",
+    "sections": {
+        "intro_startup": "Why Cursor AI for Startup Development?",
+        "features_startup": "Key Cursor AI Features for Engineering Teams",
+        "getting_started_startup": "Getting Started with Cursor (AI Code Editor)",
+        "use_cases_startup": "Cursor in Action: Accelerating Startup Development",
+        "integration_startup": "Integrating Cursor into Your Development Workflow",
+        "roi_startup": "Cursor AI's ROI: Development Velocity & Code Quality",
+        "pricing_startup": "Cursor AI Pricing: Free & Pro Tiers for Startups",
+        "action_steps": "Your First Week with Cursor AI: Quick Wins",
+        "pros_cons_startup": "Cursor AI: Pros & Cons for Startups",
+        "resources_startup": "Further Learning & Cursor Community"
     },
+    "content": {
+        "intro_startup": """
+            <p>Cursor is a code editor built from the ground up for AI-powered development. It's a fork of VS Code, meaning it retains the familiar interface and extensive extension ecosystem that developers love, but with AI capabilities deeply integrated into its core. This is not just a plugin like GitHub Copilot; it's a cohesive environment where the AI has full context of your entire codebase.</p>
+            <p>For a startup's engineering team, this means:</p>
+            <ul>
+                <li><strong>Accelerated Development:</strong> Generate boilerplate code, entire functions, and even complex algorithms in seconds.</li>
+                <li><strong>Deeper Code Comprehension:</strong> Instantly understand complex or legacy codebases by asking the AI to explain specific sections.</li>
+                <li><strong>Faster Debugging:</strong> Feed error messages directly to the AI, which can scan your code to find the root cause and suggest a fix.</li>
+                <li><strong>Efficient Refactoring:</strong> Highlight code and ask the AI to refactor it for readability, performance, or to fit a new pattern.</li>
+            </ul>
+            <p>Think of it as pair programming with an AI that has perfect memory of your project, knows best practices, and is available 24/7. It significantly reduces the friction of modern software development.</p>
+        """,
+        "features_startup": create_list_html([
+            ("Code-Aware AI Chat", "Chat with an AI that has the full context of your project files. Ask questions, get explanations, and generate code snippets relevant to your work."),
+            ("Inline AI Editing (Ctrl/Cmd + K)", "Highlight any block of code and use a natural language prompt to edit or refactor it in place."),
+            ("Generate from Scratch", "Prompt the AI to generate new files or large blocks of code based on a description of the desired functionality."),
+            ("AI-Powered Debugging", "Paste an error message or select buggy code and have the AI automatically identify the issue and propose a solution."),
+            ("Codebase-wide Answers", "Ask questions like 'How does our authentication work?' and get an answer synthesized from across your entire repository."),
+            ("VS Code Fork & Extension Compatibility", "Use your favorite themes, keybindings, and most extensions from the VS Code marketplace in a familiar environment."),
+            ("Auto-generated Tests & Docs", "Highlight a function and ask the AI to generate corresponding unit tests or documentation strings.")
+        ], list_class="key-feature-list", bold_first=True),
+        "getting_started_startup": """
+            <p>Onboarding your engineering team to Cursor:</p>
+            <ol>
+                <li><strong>Download and Install:</strong> Head to <a href="https://cursor.sh/" target="_blank">cursor.sh</a> and download the editor for your OS (macOS, Windows, Linux).</li>
+                <li><strong>Open a Project:</strong> Launch Cursor and open an existing project folder just like you would with VS Code. It will feel instantly familiar.</li>
+                <li><strong>Learn the Core Commands:</strong>
+                    <ul>
+                        <li><strong>AI Chat:</strong> Press `Cmd/Ctrl + L` to open the chat pane. Ask a question about your code.</li>
+                        <li><strong>Inline Edit:</strong> Select a piece of code and press `Cmd/Ctrl + K`. A prompt will appear allowing you to ask for a change.</li>
+                    </ul>
+                </li>
+                <li><strong>Import VS Code Settings:</strong> Cursor often prompts you to import your settings, keybindings, and extensions from VS Code to make the transition seamless.</li>
+                <li><strong>(Optional) Add Your API Key:</strong> In the settings, Pro users can add their own OpenAI API key to get priority access to models and better control over usage.</li>
+            </ol>
+        """,
+        "use_cases_startup": """
+            <h4>Feature Development & Prototyping:</h4>
+            <ul>
+                <li><strong>Scaffolding:</strong> "Generate a new React component named 'UserProfile' with props for name, email, and avatar. Include basic styling with Tailwind CSS."</li>
+                <li><strong>API Integration:</strong> "Write a Javascript function that fetches data from the `[API_ENDPOINT]` and handles loading and error states."</li>
+            </ul>
+            <h4>Debugging & Maintenance:</h4>
+            <ul>
+                <li><strong>Error Resolution:</strong> "I'm getting this traceback: `[paste error here]`. Scan the relevant files and tell me what's wrong and how to fix it."</li>
+                <li><strong>Performance Optimization:</strong> "Review this function and suggest ways to make it more performant."</li>
+            </ul>
+            <h4>Code Refactoring & Quality:</h4>
+            <ul>
+                <li><strong>Modernization:</strong> "Convert this class-based React component to a functional component using hooks."</li>
+                <li><strong>Readability:</strong> "This function is too complex. Refactor it into smaller, single-responsibility helper functions."</li>
+            </ul>
+            <h4>Onboarding & Code Exploration:</h4>
+            <ul>
+                <li><strong>Learning a New Codebase:</strong> "Explain the purpose of the `services/payments.js` file and how it interacts with the User model."</li>
+                <li><strong>Writing Documentation:</strong> "Generate a README file for this module, explaining what it does and documenting its public functions."</li>
+            </ul>
+        """,
+        "integration_startup": """
+            <p>As a fork of VS Code, Cursor's primary integration is with the developer's existing toolchain. It's designed to be a drop-in replacement, not a peripheral tool.</p>
+            <p>Key integration points for a startup's workflow:</p>
+            <ul>
+                <li><strong>VS Code Ecosystem:</strong> The single most important integration. Most extensions for themes (e.g., Cobalt2, Dracula), linters (ESLint, Prettier), language support (Python, Go), and Docker work out of the box.</li>
+                <li><strong>Version Control:</strong> Comes with the same robust Git and GitHub integration as VS Code. You can stage, commit, push, and manage pull requests directly from the editor.</li>
+                <li><strong>Terminal:</strong> The integrated terminal works exactly as it does in VS Code, allowing you to run build scripts, start servers, and interact with your system without leaving the editor.</li>
+                <li><strong>AI Model APIs:</strong> Integrates directly with OpenAI's models (GPT-3.5, GPT-4, etc.). The Pro plan allows you to "Bring Your Own Key" (BYOK) for more direct control over API usage and access to newer models.</li>
+                <li><strong>Project Configurations:</strong> Reads existing project configurations like `.eslintrc`, `prettierrc`, and `tsconfig.json` to enforce team-wide coding standards.</li>
+            </ul>
+            <p><strong>Startup Advantage:</strong> There is virtually zero friction in adopting Cursor. A developer can download it, import their settings, and be more productive within minutes, using all the tools and workflows they already rely on.</p>
+        """,
+        "roi_startup": """
+            <p>For startups, Cursor's ROI is measured in engineering velocity and efficiency, which directly impacts time-to-market.</p>
+            <ul>
+                <li><strong>Drastically Reduced Development Time:</strong> Automating the generation of boilerplate, tests, and well-understood logic can cut down feature development time significantly.
+                    <ul><li><em>Example:</em> If a developer saves 60 minutes per day on routine coding and debugging, that's over 20 hours saved per month, per developer.</li></ul>
+                </li>
+                <li><strong>Faster Bug Resolution:</strong> AI-assisted debugging reduces the time spent on troubleshooting, allowing developers to ship fixes faster and focus on new features.</li>
+                <li><strong>Accelerated Onboarding:</strong> New hires can become productive faster by using the AI to navigate and understand an unfamiliar codebase. This is a massive advantage for fast-growing teams.</li>
+                <li><strong>Improved Code Quality and Consistency:</strong> The AI can help enforce best practices and refactor code, leading to a more maintainable and robust application over time.</li>
+                <li><strong>Unlocking Senior Developer Focus:</strong> By handling mundane tasks, Cursor frees up senior engineers to focus on high-level architecture and complex problem-solving.</li>
+            </ul>
+            <p><strong>Measuring ROI:</strong>
+                Track sprint velocity or story points completed before and after adoption.
+                Survey developers on their perceived time savings for common tasks (e.g., writing a new API endpoint, debugging an issue).
+                Measure the time it takes for a new engineer to make their first significant contribution.
+            </p>
+        """,
+        "pricing_startup": """
+            <p>Cursor offers a straightforward pricing model that caters to individual developers and teams, making it accessible for startups.</p>
+            <ul>
+                <li><strong>Free Plan:</strong>
+                    <ul>
+                        <li>Includes a limited number of "fast" AI responses per month using powerful models like GPT-4. After the limit, it may use slower models or have rate limits.</li>
+                        <li>Access to all core editor features.</li>
+                        <li><strong>Best for:</strong> Individual developers trying out the tool, or very light usage within a team.</li>
+                    </ul>
+                </li>
+                <li><strong>Pro Plan:</strong>
+                    <ul>
+                        <li>Priced per user per month (e.g., ~$20/user/month, with annual discounts).</li>
+                        <li>Provides a much larger allowance of fast AI responses.</li>
+                        <li>Includes the "Bring Your Own Key" (BYOK) feature, allowing you to use your own OpenAI API key for unlimited usage (you pay OpenAI for what you use).</li>
+                        <li>Access to the very latest AI models as they become available.</li>
+                        <li><strong>Best for:</strong> Any professional developer or startup engineering team. The productivity gains make this a high-ROI investment.</li>
+                    </ul>
+                </li>
+                <li><strong>Business/Enterprise Plan:</strong>
+                    <ul>
+                        <li>Custom pricing for larger teams.</li>
+                        <li>Offers centralized billing, team management, and enhanced security/privacy features.</li>
+                        <li>May offer options for self-hosting or stricter data controls.</li>
+                    </ul>
+                </li>
+            </ul>
+            <p><strong>Startup Strategy:</strong>
+                Have your entire team try the Free plan for a few days.
+                The value is usually immediately obvious. Upgrade the entire engineering team to the Pro plan to maximize velocity. The cost per developer is minimal compared to the salary and the potential productivity gains.
+            </p>
+            <p>Always check the official <a href="https://cursor.sh/pricing" target="_blank">Cursor pricing page</a> for the most current details and features.</p>
+        """,
+        "action_steps": create_list_html([
+            ("<strong>Day 1: Install & Ask a Question.</strong> Install Cursor and open a project. Open the AI Chat (`Cmd/Ctrl+L`) and ask a question about the file you have open, like 'What is the purpose of this file?'. Focus: Understanding AI context.", ""),
+            ("<strong>Day 2: Use Inline Edit (`Ctrl+K`).</strong> Find a function in your code. Highlight it, press `Cmd/Ctrl+K`, and type 'add JSDoc comments to this function'. Watch it generate the documentation. Focus: The core editing workflow.", ""),
+            ("<strong>Day 3: Generate a New File.</strong> In the chat, prompt the AI: 'Generate code for a new file named `utils.js` that has a function to debounce user input'. Copy the code into a new file. Focus: Code generation.", ""),
+            ("<strong>Day 4-5: Build a Real Feature.</strong> Tackle a small ticket from your backlog using Cursor as your primary tool. Use `Ctrl+K` to refactor, chat to debug errors, and code generation to scaffold new components. Focus: Integrating Cursor into your daily workflow.", "")
+        ], list_class="action-steps-list", bold_first=False),
+        "pros_cons_startup": create_pros_cons_html(
+            pros=[
+                ("Massive Productivity Boost: Deeply integrated AI significantly speeds up coding, debugging, and refactoring.", "Familiar VS Code Base: Zero learning curve for the UI, and compatibility with most existing VS Code extensions and settings."),
+                ("Superior Code Context: AI's ability to reference the entire codebase leads to more relevant and accurate suggestions than simple autocomplete plugins.", "Accelerates Onboarding: A game-changer for new engineers trying to understand a complex project."),
+                ("Active Development: The tool is constantly being updated with new features and better AI model integrations.")
+            ],
+            cons=[
+                ("Resource Intensive: Can use more memory and CPU than a standard VS Code setup, especially during intensive AI operations.", "Dependency on AI Provider: Your workflow is tied to the availability and performance of OpenAI's APIs.", "Subscription Cost: The per-seat cost can add up for a growing engineering team.", "Code Privacy: While there are privacy policies, sending code snippets to a third-party API may be a concern for startups with highly sensitive IP (Business plan may mitigate this)."),
+                ("Lags Behind VS Code Releases: As a fork, it may sometimes be a few versions behind the official VS Code release, delaying access to VS Code's newest non-AI features.")
+            ]
+        ),
+        "resources_startup": """
+            <ul>
+                <li><a href="https://cursor.sh/docs" target="_blank" rel="noopener noreferrer">Cursor Official Docs:</a> The best place to start for features and guides.</li>
+                <li><a href="https://discord.gg/cursor" target="_blank" rel="noopener noreferrer">Cursor Discord Community:</a> An active community for asking questions, sharing tips, and getting help.</li>
+                <li><a href="https://cursor.sh/changelog" target="_blank" rel="noopener noreferrer">Official Changelog:</a> Keep up with the rapid pace of new features and improvements.</li>
+                <li><a href="https://twitter.com/cursor_ide" target="_blank" rel="noopener noreferrer">Cursor on Twitter/X:</a> Follow for news and announcements.</li>
+            </ul>
+        """
+    }
+},
     # --- ChatGPT ---
     "chatgpt": {
         "name": "OpenAI ChatGPT",
@@ -873,6 +894,7 @@ tools_data = {
             """
         }
     },
+    
     # --- Bardeen AI ---
     "bardeen": {
         "name": "Bardeen AI",
