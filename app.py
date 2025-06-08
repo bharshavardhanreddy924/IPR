@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request # Added request for active nav link
-
+import os
 app = Flask(__name__)
 
 # --- Helper Functions for Content Generation ---
