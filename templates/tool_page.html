@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %}{{ tool_data.name }} for Startups | AI Startup Kit{% endblock %}
+
+{% block content %}
+<div class="tool-page-container">
+    <div class="container">
+        <header class="tool-hero animate-in" data-animation="fade-in-up">
+            <img src="{{ tool_data.logo_url }}" alt="{{ tool_data.name }} Logo" class="tool-logo">
+            <h1>{{ tool_data.name }} for Startups</h1>
+            <p class="tagline">{{ tool_data.startup_tagline }}</p>
+            <a href="{{ tool_data.cta_link }}" class="hero-cta" target="_blank" rel="noopener noreferrer">{{ tool_data.cta_text }} <i class="fas fa-external-link-alt"></i></a>
+        </header>
+
+        <div class="tool-page-layout">
+            <aside class="toc-container animate-in" data-animation="fade-in" data-delay="200">
+                <nav class="toc">
+                    <h3>On This Page</h3>
+                    <ul>
+                        {% for section_id, section_title in tool_data.sections.items() %}
+                            {% if section_id in tool_data.content and tool_data.content[section_id]|striptags|trim %}
+                                <li><a href="#{{ section_id }}">{{ section_title }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </nav>
+            </aside>
+
+            <div class="tool-content-main">
+                {% if tool_data.sections and tool_data.content %}
+                    {% for section_id, section_title in tool_data.sections.items() %}
+                        {% if section_id in tool_data.content and tool_data.content[section_id]|striptags|trim %}
+                        <section class="content-section animate-in" data-animation="fade-in-up" id="{{ section_id }}">
+                            <h2 class="content-section-title">
+                                <span class="section-icon">
+                                    {% if section_id.startswith('intro') %}👋
+                                    {% elif section_id.startswith('feat') %}⭐
+                                    {% elif section_id.startswith('get') %}🚀
+                                    {% elif section_id.startswith('use') %}🎯
+                                    {% elif section_id.startswith('integ') %}🔗
+                                    {% elif section_id.startswith('roi') %}📈
+                                    {% elif section_id.startswith('pric') %}💲
+                                    {% elif section_id.startswith('action') %}👟
+                                    {% elif section_id.startswith('pros') %}⚖️
+                                    {% elif section_id.startswith('res') %}📚
+                                    {% else %}💡
+                                    {% endif %}
+                                </span>
+                                {{ section_title }}
+                            </h2>
+                            <div class="content-body">
+                                {{ tool_data.content[section_id] | safe }}
+                            </div>
+                        </section>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <section class="content-section animate-in" data-animation="fade-in-up">
+                        <h2 class="content-section-title"><span class="section-icon">🚧</span> Content Coming Soon!</h2>
+                        <div class="content-body">
+                           <p>We are diligently preparing detailed information on how your startup can leverage {{ tool_data.name }}. Please check back shortly!</p>
+                        </div>
+                    </section>
+                {% endif %}
+                
+                <section class="content-section final-cta text-center animate-in" data-animation="fade-in-up">
+                    <h2>Ready to get started with {{ tool_data.name }}?</h2>
+                     <a href="{{ tool_data.cta_link }}" class="hero-cta" target="_blank" rel="noopener noreferrer">{{ tool_data.cta_text }} <i class="fas fa-external-link-alt"></i></a>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -3,57 +3,57 @@
 {% block title %}AI Tools for Startups - Your Guide to AI-Powered Growth{% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
-<section class="hero-section py-5 bg-gradient text-white">
-    <div class="container">
+<section class="hero-section py-5 text-white position-relative overflow-hidden">
+    <div class="container position-relative z-1">
         <div class="row align-items-center">
-            <div class="col-lg-6" data-aos="fade-right">
-                <h1 class="display-4 fw-bold mb-4">Supercharge Your Startup with AI</h1>
-                <p class="lead mb-4">Discover and master the most powerful AI tools that can transform your startup's productivity, creativity, and growth.</p>
-                <div class="d-flex gap-3">
-                    <a href="#tools" class="btn btn-light btn-lg">Explore Tools</a>
-                    <a href="#learn" class="btn btn-outline-light btn-lg">Learn More</a>
+            <div class="col-lg-6 hero-content" data-aos="fade-right" data-aos-duration="1000">
+                <h1 class="display-4 fw-bold mb-4 text-black hero-title">Supercharge Your Startup with AI</h1>
+                <p class="lead mb-4 text-black hero-subtitle">Discover and master the most powerful AI tools that can transform your startup's productivity, creativity, and growth.</p>
+                <div class="d-flex gap-3 hero-cta">
+                    <a href="#tools" class="btn btn-primary btn-lg custom-btn-primary animated-btn">Explore Tools</a>
+                    <a href="#learn" class="btn btn-primary btn-lg custom-btn-primary animated-btn">Learn More</a>
                 </div>
             </div>
-            <div class="col-lg-6" data-aos="fade-left">
-                <img src="{{ url_for('static', filename='img/hero-illustration.svg') }}" alt="AI Tools Illustration" class="img-fluid">
+            <div class="col-lg-6 hero-image-container" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                <img src="{{ url_for('static', filename='img/whyy.png') }}" alt="AI Tools Illustration" class="img-fluid hero-image">
             </div>
         </div>
     </div>
+    <div class="hero-blob-1 d-none d-lg-block"></div>
+    <div class="hero-blob-2 d-none d-lg-block"></div>
 </section>
 
-<!-- Features Section -->
 <section class="features-section py-5">
     <div class="container">
-        <div class="section-title" data-aos="fade-up">
-            <h2>Why Use AI Tools?</h2>
-            <p>Leverage the power of artificial intelligence to streamline your operations and boost productivity</p>
+        <div class="section-title text-center mb-5" data-aos="fade-up">
+            <h2 class="display-5 fw-bold">Why Use AI Tools?</h2>
+            <p class="lead text-muted">Leverage the power of artificial intelligence to streamline your operations and boost productivity.</p>
         </div>
         <div class="row g-4">
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body text-center">
-                        <i class="fas fa-rocket fa-3x text-primary mb-3"></i>
-                        <h3 class="h5">Accelerate Growth</h3>
-                        <p class="text-muted">Scale your operations faster with AI-powered automation and insights</p>
+            <div class="col-md-4" data-aos="zoom-in-up" data-aos-delay="100">
+                <div class="card h-100 border-0 shadow-lg feature-card">
+                    <div class="card-body text-center p-4">
+                        <i class="fas fa-rocket fa-4x text-primary mb-4 feature-icon"></i>
+                        <h3 class="h5 fw-bold mb-2">Accelerate Growth</h3>
+                        <p class="text-muted">Scale your operations faster with AI-powered automation and insights.</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body text-center">
-                        <i class="fas fa-brain fa-3x text-primary mb-3"></i>
-                        <h3 class="h5">Enhance Creativity</h3>
-                        <p class="text-muted">Generate innovative ideas and content with advanced AI models</p>
+            <div class="col-md-4" data-aos="zoom-in-up" data-aos-delay="200">
+                <div class="card h-100 border-0 shadow-lg feature-card">
+                    <div class="card-body text-center p-4">
+                        <i class="fas fa-brain fa-4x text-primary mb-4 feature-icon"></i>
+                        <h3 class="h5 fw-bold mb-2">Enhance Creativity</h3>
+                        <p class="text-muted">Generate innovative ideas and content with advanced AI models.</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                <div class="card h-100 border-0 shadow-sm">
-                    <div class="card-body text-center">
-                        <i class="fas fa-chart-line fa-3x text-primary mb-3"></i>
-                        <h3 class="h5">Make Data-Driven Decisions</h3>
-                        <p class="text-muted">Leverage AI insights to make informed business decisions</p>
+            <div class="col-md-4" data-aos="zoom-in-up" data-aos-delay="300">
+                <div class="card h-100 border-0 shadow-lg feature-card">
+                    <div class="card-body text-center p-4">
+                        <i class="fas fa-chart-line fa-4x text-primary mb-4 feature-icon"></i>
+                        <h3 class="h5 fw-bold mb-2">Make Data-Driven Decisions</h3>
+                        <p class="text-muted">Leverage AI insights to make informed business decisions.</p>
                     </div>
                 </div>
             </div>
@@ -61,26 +61,25 @@
     </div>
 </section>
 
-<!-- Tools Section -->
 <section id="tools" class="tools-section py-5 bg-light">
     <div class="container">
-        <div class="section-title" data-aos="fade-up">
-            <h2>Featured AI Tools</h2>
-            <p>Explore our curated collection of powerful AI tools for startups</p>
+        <div class="section-title text-center mb-5" data-aos="fade-up">
+            <h2 class="display-5 fw-bold">Featured AI Tools</h2>
+            <p class="lead text-muted">Explore our curated collection of powerful AI tools for startups.</p>
         </div>
         <div class="row g-4">
             {% for tool_id, tool in tools_data.items() %}
             <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="{{ loop.index * 100 }}">
-                <div class="card h-100 tool-card">
-                    <div class="card-body">
-                        <img src="{{ tool.logo_url }}" alt="{{ tool.name }} Logo" class="tool-logo mb-3">
-                        <h3 class="h5 mb-3">{{ tool.name }}</h3>
-                        <p class="text-muted mb-4">{{ tool.startup_tagline }}</p>
-                        <div class="d-flex gap-2 mb-3">
-                            <a href="{{ tool.cta_link }}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                <div class="card h-100 tool-card shadow-sm border-0">
+                    <div class="card-body d-flex flex-column align-items-center justify-content-between p-4">
+                        <img src="{{ tool.logo_url }}" alt="{{ tool.name }} Logo" class="tool-logo mb-3 img-fluid">
+                        <h3 class="h5 fw-bold mb-2 text-center">{{ tool.name }}</h3>
+                        <p class="text-muted text-center mb-4 flex-grow-1">{{ tool.startup_tagline }}</p>
+                        <div class="d-flex gap-2 w-100 justify-content-center">
+                            <a href="{{ tool.cta_link }}" class="btn btn-primary custom-btn-primary animated-btn btn-sm" target="_blank" rel="noopener noreferrer">
                                 {{ tool.cta_text }}
                             </a>
-                            <a href="/{{ tool_id }}" class="btn btn-outline-primary">Learn More</a>
+                            <a href="/{{ tool_id }}" class="btn btn-outline-primary custom-btn-outline animated-btn btn-sm">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -90,163 +89,453 @@
     </div>
 </section>
 
-<!-- How It Works Section -->
 <section id="learn" class="how-it-works-section py-5">
     <div class="container">
-        <div class="section-title" data-aos="fade-up">
-            <h2>How It Works</h2>
-            <p>Get started with AI tools in three simple steps</p>
+        <div class="section-title text-center mb-5" data-aos="fade-up">
+            <h2 class="display-5 fw-bold">How It Works</h2>
+            <p class="lead text-muted">Get started with AI tools in three simple steps.</p>
         </div>
-        <div class="row g-4">
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="text-center">
-                    <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mb-3" style="width: 64px; height: 64px;">
-                        <span class="h4 mb-0">1</span>
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                <div class="text-center how-it-works-step p-4">
+                    <div class="step-number-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mb-3">
+                        <span class="h4 mb-0 fw-bold">1</span>
                     </div>
-                    <h3 class="h5">Choose Your Tool</h3>
-                    <p class="text-muted">Browse our collection and select the AI tool that best fits your needs</p>
+                    <h3 class="h5 fw-bold mb-2">Choose Your Tool</h3>
+                    <p class="text-muted">Browse our comprehensive collection and select the AI tool that best fits your startup's unique needs and goals.</p>
                 </div>
             </div>
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="text-center">
-                    <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mb-3" style="width: 64px; height: 64px;">
-                        <span class="h4 mb-0">2</span>
+            <div class="col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                <div class="text-center how-it-works-step p-4">
+                    <div class="step-number-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mb-3">
+                        <span class="h4 mb-0 fw-bold">2</span>
                     </div>
-                    <h3 class="h5">Learn & Implement</h3>
-                    <p class="text-muted">Follow our detailed guides to set up and start using your chosen tool</p>
+                    <h3 class="h5 fw-bold mb-2">Learn & Implement</h3>
+                    <p class="text-muted">Follow our detailed guides, tutorials, and best practices to seamlessly integrate and start utilizing your chosen AI tool.</p>
                 </div>
             </div>
-            <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                <div class="text-center">
-                    <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mb-3" style="width: 64px; height: 64px;">
-                        <span class="h4 mb-0">3</span>
+            <div class="col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                <div class="text-center how-it-works-step p-4">
+                    <div class="step-number-circle bg-primary text-white d-inline-flex align-items-center justify-content-center mb-3">
+                        <span class="h4 mb-0 fw-bold">3</span>
                     </div>
-                    <h3 class="h5">Scale & Optimize</h3>
-                    <p class="text-muted">Use our best practices to maximize the impact of AI in your startup</p>
+                    <h3 class="h5 fw-bold mb-2">Scale & Optimize</h3>
+                    <p class="text-muted">Discover advanced strategies and tips to maximize the impact of AI, scale your operations, and continuously optimize your processes.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- CTA Section -->
-<section class="cta-section py-5 bg-gradient text-white">
-    <div class="container text-center">
-        <h2 class="mb-4" data-aos="fade-up">Ready to Transform Your Startup?</h2>
-        <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">Start exploring our AI tools today and take your business to the next level</p>
-        <a href="#tools" class="btn btn-light btn-lg" data-aos="fade-up" data-aos-delay="200">Get Started</a>
+<section class="cta-section py-5 text-white text-center bg-gradient">
+    <div class="container" data-aos="zoom-in" data-aos-duration="800">
+        <h2 class="display-4 fw-bold mb-4 text-black">Ready to Transform Your Startup?</h2>
+        <p class="lead mb-5 text-black">Start exploring our AI tools today and take your business to the next level of innovation and efficiency!</p>
+        <a href="#tools" class="btn btn-light btn-lg custom-btn-light animated-btn-cta">Get Started Now</a>
     </div>
 </section>
 {% endblock %}
 
+---
+
 {% block extra_css %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 <style>
-.hero-section {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-    color: white;
-    padding: 6rem 0;
-    margin-top: -1.5rem;
-}
+    :root {
+        --primary: #6f42c1; /* Deeper purple */
+        --primary-dark: #5c379e; /* Even darker for gradient */
+        --secondary: #007bff; /* A nice blue accent if needed */
+        --light-bg: #f8f9fa;
+        --dark-text: #212529;
+        --light-text: #ffffff;
+        --shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.12);
+        --radius-lg: 1.25rem; /* Increased border radius for softer look */
+        --radius-md: 0.75rem;
+    }
 
-.search-container {
-    max-width: 600px;
-    margin: 0 auto;
-}
+    body {
+        font-family: 'Inter', sans-serif; /* Modern sans-serif font */
+        color: var(--dark-text);
+        scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+    }
 
-.tool-card {
-    background: white;
-    border-radius: var(--radius-lg);
-    padding: 2rem;
-    height: 100%;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: var(--shadow);
-}
+    /* --- General Section Styling --- */
+    .section-title {
+        margin-bottom: 3.5rem;
+    }
 
-.tool-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-}
+    .section-title h2 {
+        font-size: 2.8rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+        color: var(--primary-dark);
+    }
 
-.tool-card-header {
-    text-align: center;
-    margin-bottom: 1.5rem;
-}
+    .section-title p {
+        font-size: 1.15rem;
+        max-width: 700px;
+        margin: 0 auto;
+        color: var(--dark-text);
+    }
 
-.tool-description {
-    color: var(--gray-600);
-    margin-bottom: 1.5rem;
-}
+    /* --- Custom Button Styles --- */
+    .custom-btn-primary {
+        background-color: var(--primary);
+        border-color: var(--primary);
+        color: var(--light-text);
+        font-weight: 600;
+        padding: 0.8rem 2rem;
+        border-radius: var(--radius-md);
+        transition: all 0.3s ease-in-out;
+        box-shadow: var(--shadow);
+    }
 
-.feature-card {
-    background: white;
-    padding: 2rem;
-    border-radius: var(--radius-lg);
-    height: 100%;
-    transition: transform 0.3s ease;
-    box-shadow: var(--shadow);
-}
+    .custom-btn-primary:hover, .custom-btn-primary:focus {
+        background-color: var(--primary-dark);
+        border-color: var(--primary-dark);
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg);
+    }
 
-.feature-card:hover {
-    transform: translateY(-5px);
-}
+    .custom-btn-outline {
+        border-color: var(--primary);
+        color: var(--primary);
+        font-weight: 600;
+        padding: 0.8rem 2rem;
+        border-radius: var(--radius-md);
+        transition: all 0.3s ease-in-out;
+    }
 
-.step-card {
-    background: white;
-    padding: 2rem;
-    border-radius: var(--radius-lg);
-    height: 100%;
-    position: relative;
-    box-shadow: var(--shadow);
-}
+    .custom-btn-outline:hover, .custom-btn-outline:focus {
+        background-color: var(--primary);
+        color: var(--light-text);
+        transform: translateY(-3px);
+        box-shadow: var(--shadow);
+    }
 
-.step-number {
-    width: 40px;
-    height: 40px;
-    background: var(--primary);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    margin: 0 auto 1rem;
-}
+    .custom-btn-light {
+        background-color: var(--light-text);
+        border-color: var(--light-text);
+        color: var(--primary);
+        font-weight: 600;
+        padding: 0.9rem 2.5rem;
+        border-radius: var(--radius-md);
+        transition: all 0.3s ease-in-out;
+        box-shadow: var(--shadow);
+    }
 
-.update-card {
-    background: white;
-    padding: 2rem;
-    border-radius: var(--radius-lg);
-    height: 100%;
-    box-shadow: var(--shadow);
-}
+    .custom-btn-light:hover, .custom-btn-light:focus {
+        background-color: #e2e6ea; /* Slightly darker white */
+        border-color: #e2e6ea;
+        color: var(--primary-dark);
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-lg);
+    }
 
-.update-date {
-    color: var(--gray-500);
-    font-size: 0.875rem;
-    margin-bottom: 0.5rem;
-}
-
-.read-more {
-    color: var(--primary);
-    text-decoration: none;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    margin-top: 1rem;
-}
-
-.read-more:hover {
-    color: var(--primary-dark);
-}
-
-@media (max-width: 768px) {
+    /* --- Hero Section --- */
     .hero-section {
-        padding: 4rem 0;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        color: white;
+        padding: 8rem 0; /* More vertical padding */
+        margin-top: -1.5rem; /* Counteract default Flask margin if any */
+        position: relative;
+        overflow: hidden; /* Hide overflow from blobs */
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     }
-    
-    .tool-card, .feature-card, .step-card, .update-card {
-        margin-bottom: 1rem;
+
+    .hero-section .hero-title,
+    .hero-section .hero-subtitle {
+        color: white !important; /* Force white text over gradient */
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
-}
+
+    .hero-title {
+        font-size: 3.8rem; /* Larger title */
+        line-height: 1.1;
+    }
+
+    .hero-subtitle {
+        font-size: 1.4rem;
+        line-height: 1.5;
+    }
+
+    .hero-image {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
+        animation: floatImage 3s ease-in-out infinite alternate; /* Floating animation */
+    }
+
+    @keyframes floatImage {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-15px); }
+    }
+
+    /* Decorative Blobs for Hero */
+    .hero-blob-1, .hero-blob-2 {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.1); /* Semi-transparent white */
+        border-radius: 50%;
+        filter: blur(80px); /* Soft blur effect */
+        animation: blobMove 15s infinite alternate;
+        z-index: 0;
+    }
+
+    .hero-blob-1 {
+        width: 400px;
+        height: 400px;
+        top: -100px;
+        left: -150px;
+    }
+
+    .hero-blob-2 {
+        width: 300px;
+        height: 300px;
+        bottom: -80px;
+        right: -100px;
+        animation-delay: 2s; /* Stagger animation */
+    }
+
+    @keyframes blobMove {
+        0% { transform: translate(0, 0) scale(1); }
+        25% { transform: translate(50px, -20px) scale(1.05); }
+        50% { transform: translate(0, 50px) scale(0.95); }
+        75% { transform: translate(-30px, -40px) scale(1.1); }
+        100% { transform: translate(0, 0) scale(1); }
+    }
+
+
+    /* --- Features Section --- */
+    .feature-card {
+        background: white;
+        border-radius: var(--radius-lg);
+        height: 100%;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: var(--shadow);
+        overflow: hidden; /* For icon hover effect */
+    }
+
+    .feature-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .feature-icon {
+        color: var(--primary);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .feature-card:hover .feature-icon {
+        transform: scale(1.1) rotate(5deg);
+    }
+
+    .feature-card h3 {
+        color: var(--primary-dark);
+    }
+
+    /* --- Tools Section --- */
+    .tools-section {
+        background-color: var(--light-bg);
+    }
+
+    .tool-card {
+        background: white;
+        border-radius: var(--radius-lg);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: var(--shadow);
+    }
+
+    .tool-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .tool-logo {
+        width: 80px; /* Standardized logo size */
+        height: 80px;
+        object-fit: contain;
+        border-radius: 15px; /* Slightly rounded corners for logos */
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .tool-card:hover .tool-logo {
+        transform: scale(1.05);
+    }
+
+    .tool-card h3 {
+        color: var(--primary-dark);
+    }
+
+    /* --- How It Works Section --- */
+    .how-it-works-step {
+        background: white;
+        border-radius: var(--radius-lg);
+        padding: 2.5rem;
+        box-shadow: var(--shadow);
+        height: 100%; /* Ensure consistent height */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .how-it-works-step:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-lg);
+    }
+
+    .step-number-circle {
+        width: 70px; /* Larger circles */
+        height: 70px;
+        font-size: 1.8rem;
+        background-color: var(--primary);
+        border: 4px solid var(--primary-dark); /* Add a border */
+        transition: all 0.3s ease;
+    }
+
+    .how-it-works-step:hover .step-number-circle {
+        background-color: var(--primary-dark);
+        transform: rotate(5deg) scale(1.05);
+    }
+
+    .how-it-works-step h3 {
+        color: var(--primary-dark);
+        margin-top: 1rem;
+    }
+
+    /* --- CTA Section --- */
+    .cta-section {
+        background: linear-gradient(135deg, var(--primary-dark) 0%, #4a2b7b 100%); /* A darker gradient */
+        color: var(--light-text);
+        padding: 6rem 0;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    }
+
+    .cta-section h2 {
+        color: var(--light-text); /* Ensure text is white */
+        font-size: 3rem;
+        font-weight: 700;
+    }
+
+    .cta-section p {
+        font-size: 1.25rem;
+        max-width: 800px;
+        margin: 0 auto 3rem;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Animated Button for CTA */
+    .animated-btn-cta {
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    .animated-btn-cta::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.4s ease-out, height 0.4s ease-out;
+        z-index: -1;
+    }
+
+    .animated-btn-cta:hover::before {
+        width: 300%;
+        height: 300%;
+    }
+
+    /* Global Animations for buttons and general elements */
+    .animated-btn {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .animated-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* --- Responsive Adjustments --- */
+    @media (max-width: 991.98px) {
+        .hero-section {
+            padding: 6rem 0;
+            text-align: center;
+        }
+        .hero-image-container {
+            margin-top: 3rem;
+        }
+        .hero-title {
+            font-size: 2.8rem;
+        }
+        .hero-subtitle {
+            font-size: 1.2rem;
+        }
+        .hero-blob-1, .hero-blob-2 {
+            display: none !important; /* Hide blobs on smaller screens */
+        }
+    }
+
+    @media (max-width: 767.98px) {
+        .section-title h2 {
+            font-size: 2.2rem;
+        }
+        .section-title p {
+            font-size: 1rem;
+        }
+        .cta-section h2 {
+            font-size: 2.5rem;
+        }
+        .cta-section p {
+            font-size: 1.1rem;
+        }
+        .how-it-works-step {
+            margin-bottom: 1.5rem; /* Add space between steps on mobile */
+        }
+    }
 </style>
+{% endblock %}
+
+---
+
+{% block extra_js %}
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,     // Animation duration
+            easing: 'ease-out-quad', // Easing function
+            once: true,         // Whether animation should happen only once - default
+            mirror: false,      // Whether elements should animate out while scrolling past them
+            anchorPlacement: 'top-bottom', // defines which position of the element should trigger the animation
+        });
+
+        // Smooth scroll for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add a class to hero content after a small delay for initial animation
+        setTimeout(() => {
+            document.querySelector('.hero-content').classList.add('animate__animated', 'animate__fadeInUp');
+            document.querySelector('.hero-image-container').classList.add('animate__animated', 'animate__fadeInRight');
+            document.querySelector('.hero-title').classList.add('animate__animated', 'animate__fadeInUp', 'animate__delay-0.3s');
+            document.querySelector('.hero-subtitle').classList.add('animate__animated', 'animate__fadeInUp', 'animate__delay-0.6s');
+            document.querySelector('.hero-cta').classList.add('animate__animated', 'animate__fadeInUp', 'animate__delay-0.9s');
+        }, 100); // Small delay to ensure CSS is loaded
+    });
+</script>
 {% endblock %}
