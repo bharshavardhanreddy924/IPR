@@ -5,19 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="AI Tools for Startups - Your guide to leveraging AI for business growth">
     <title>{% block title %}AI Tools for Startups{% endblock %}</title>
-    
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
-    
+
     <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .hero-section {
+            text-align: center;
+            padding: 80px 20px;
+            background-color: #f8f9fa;
+        }
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1f2937;
+        }
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: #6b7280;
+        }
+        .ai-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+    </style>
     {% block extra_css %}{% endblock %}
 </head>
 <body class="d-flex flex-column min-vh-100">
+
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
         <div class="container">
@@ -29,7 +50,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == '/bard' %}active{% endif %}" href="/bard">
                             <i class="fas fa-robot me-1"></i>Bard
@@ -60,10 +81,25 @@
                             <i class="fas fa-magic me-1"></i>Bardeen
                         </a>
                     </li>
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-primary" href="https://chatbot-ai-fqe6.onrender.com" target="_blank">
+                            AI Assistant
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
     </nav>
+
+    <!-- Hero Section (Optional Home Landing) -->
+    <div class="hero-section">
+        <div class="ai-icon">🤖</div>
+        <h1 class="hero-title">START UP AI Assistant</h1>
+        <p class="hero-subtitle">Ask me anything about AI tools for startups</p>
+        <a href="https://chatbot-ai-fqe6.onrender.com" class="btn btn-outline-primary btn-lg mt-4" target="_blank">
+            Launch AI Assistant
+        </a>
+    </div>
 
     <!-- Main Content -->
     <main class="flex-grow-1">
@@ -85,6 +121,7 @@
                         <li><a href="/bard" class="text-decoration-none text-muted">Bard</a></li>
                         <li><a href="/chatgpt" class="text-decoration-none text-muted">ChatGPT</a></li>
                         <li><a href="/claude" class="text-decoration-none text-muted">Claude</a></li>
+                        <li><a href="https://chatbot-ai-fqe6.onrender.com" class="text-decoration-none text-muted" target="_blank">AI Assistant</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4">
@@ -108,7 +145,6 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     <script>
-        // Initialize AOS
         AOS.init({
             duration: 800,
             once: true
